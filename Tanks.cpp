@@ -31,21 +31,21 @@ int main()
 		if (Keyboard::isKeyPressed(Keyboard::Left)) 
 		{    
 			herosprite.move(-0.1, 0); 
-			herosprite.setTextureRect(IntRect(0, 96, 96, 96));    
+			herosprite.setTextureRect(IntRect(0, 0, 96, 96));    
 		} 
 
 		//координата Y, на которой герой изображен идущем вправо равна 96+96=192   
 		if (Keyboard::isKeyPressed(Keyboard::Right)) 
 		{    
 			herosprite.move(0.1, 0); 
-			herosprite.setTextureRect(IntRect(0, 192, 96, 96));    
+			herosprite.setTextureRect(IntRect(0, 0, 96, 96));    
 		} 
 
 		//координата Y на которой герой изображен идущим вверх равна 288   
 		if (Keyboard::isKeyPressed(Keyboard::Up)) 
 		{    
 			herosprite.move(0, -0.1); 
-			herosprite.setTextureRect(IntRect(0, 288, 96, 96));    
+			herosprite.setTextureRect(IntRect(0, 0, 96, 96));    
 		} 
 
 		//координата 0, это верхняя часть изображения с героем, от нее и отталкиваемся    

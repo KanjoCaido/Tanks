@@ -18,11 +18,9 @@ int main()
 
 	Sprite herosprite; //создаем объект Sprite(спрайт) 
 	herosprite.setTexture(herotextureA); //передаём в него объект Texture (текстуры) 
-	//herosprite.setTextureRect(IntRect(0, 192, 96, 96));
 	herosprite.setPosition(250, 250); //задаем начальные координаты появления спрайта 
 
-	float CurrentFrame = 0;//хранит текущий кадр 
-	//float heroteleporttimer = 0;  //реализуем телепортацию героя через 3 секунды  
+	float CurrentFrame = 0;//хранит текущий кадр  
 	Clock clock;  //создаем переменную времени и одновременно запускаем часы! 
 
 
@@ -35,13 +33,6 @@ int main()
 		clock.restart(); //перезапуск часов   
 		time = time / 800; //скорость игры   
 
-		//heroteleporttimer = heroteleporttimer + time;//прибавляем к нашей переменной time 
-		//if (heroteleporttimer > 3000) 
-		//{ 
-		//	herosprite.setPosition(0, 120); 
-		//	heroteleporttimer = 0; 
-		//} //если таймер телепорта больше 3000 (это примерно 3 секунды),   
-		// //то телепортируем героя в координату (0, 120) и обнуляем таймер телепортации 
 
 		Event event; //Переменная для события
 		while (window.pollEvent(event)) //Опрос событий 

@@ -10,15 +10,16 @@ int main()
 
 
 	Texture herotextureA, herotextureB, herotextureC, herotextureD; //cоздаем объект Texture(текстура)
-	herotextureA.loadFromFile("Textures/tankA.png"); //передаем в него объект Image (изображения) 
-	herotextureB.loadFromFile("Textures/tankB.png");
+	herotextureA.loadFromFile("Textures/tank.png"); //передаем в него объект Image (изображения) 
+	/*herotextureB.loadFromFile("Textures/tankB.png");
 	herotextureC.loadFromFile("Textures/tankC.png");
-	herotextureD.loadFromFile("Textures/tankD.png");
+	herotextureD.loadFromFile("Textures/tankD.png");*/
 
 
 	Sprite herosprite; //создаем объект Sprite(спрайт) 
 	herosprite.setTexture(herotextureA); //передаём в него объект Texture (текстуры) 
 	herosprite.setPosition(250, 250); //задаем начальные координаты появления спрайта 
+	herosprite.setOrigin(32, 32);
 
 	float CurrentFrame = 0;//хранит текущий кадр  
 	Clock clock;  //создаем переменную времени и одновременно запускаем часы! 
@@ -52,9 +53,10 @@ int main()
 			//времени и скорости. Изменив 0.005, можно изменить скорость анимации    
 			if (CurrentFrame > 3) CurrentFrame -= 3; //если пришли к третьему кадру - 
 													 //откатываемся назад. 
-			herosprite.setTexture(herotextureD);
+			
 			herosprite.setTextureRect(IntRect(96 * int(CurrentFrame), 0, 96, 96));
 			herosprite.move(-0.1 * time, 0); //происходит движение персонажа влево
+			herosprite.setRotation(270);
 			
 			
 		} 
@@ -65,9 +67,10 @@ int main()
 			CurrentFrame += 0.000005 * time;     
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 
-			herosprite.setTexture(herotextureB);
+			//herosprite.setTexture(herotextureB);
 			herosprite.setTextureRect(IntRect(96 * int(CurrentFrame), 0, 96, 96));
 			herosprite.move(0.1 * time, 0);
+			herosprite.setRotation(90);
 			
 		} 
 
@@ -77,9 +80,10 @@ int main()
 			CurrentFrame += 0.000005 * time;     
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 
-			herosprite.setTexture(herotextureA);
+			//herosprite.setTexture(herotextureA);
 			herosprite.setTextureRect(IntRect(96 * int(CurrentFrame), 0, 96, 96));
 			herosprite.move(0, -0.1 * time);
+			herosprite.setRotation(0);
 			
 		} 
 
@@ -89,10 +93,11 @@ int main()
 			CurrentFrame += 0.000005 * time;     
 			if (CurrentFrame > 3) CurrentFrame -= 3;
 
-			herosprite.setTexture(herotextureC);
+			//herosprite.setTexture(herotextureC);
 			 
 			herosprite.setTextureRect(IntRect(96 * int(CurrentFrame), 0, 96, 96));
 			herosprite.move(0, 0.1 * time);
+			herosprite.setRotation(180);
 			
 		}   
 

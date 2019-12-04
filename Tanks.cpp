@@ -9,12 +9,15 @@ int main()
 	RenderWindow window(sf::VideoMode(1024, 768, desktop.bitsPerPixel), "Tanks");
 
 
-	Texture herotexture; //cоздаем объект Texture(текстура)
-	herotexture.loadFromFile("Textures/tank.png"); //передаем в него объект Image (изображения) 
+	Texture herotextureA, herotextureB, herotextureC, herotextureD; //cоздаем объект Texture(текстура)
+	herotextureA.loadFromFile("Textures/tankA.png"); //передаем в него объект Image (изображения) 
+	herotextureB.loadFromFile("Textures/tankB.png");
+	herotextureC.loadFromFile("Textures/tankC.png");
+	herotextureD.loadFromFile("Textures/tankD.png");
 
 
 	Sprite herosprite; //создаем объект Sprite(спрайт) 
-	herosprite.setTexture(herotexture); //передаём в него объект Texture (текстуры) 
+	herosprite.setTexture(herotextureA); //передаём в него объект Texture (текстуры) 
 	//herosprite.setTextureRect(IntRect(0, 192, 96, 96));
 	herosprite.setPosition(250, 250); //задаем начальные координаты появления спрайта 
 
@@ -30,29 +33,39 @@ int main()
 		//координата Y, на которой герой изображен идущим влево равна 96   
 		if (Keyboard::isKeyPressed(Keyboard::Left)) 
 		{    
+			herosprite.setTexture(herotextureD);
 			herosprite.move(-0.1, 0); 
-			herosprite.setTextureRect(IntRect(0, 0, 96, 96));    
+			herosprite.setTextureRect(IntRect(0, 0, 96, 96));   
+			
+			
 		} 
 
 		//координата Y, на которой герой изображен идущем вправо равна 96+96=192   
 		if (Keyboard::isKeyPressed(Keyboard::Right)) 
 		{    
+			herosprite.setTexture(herotextureB);
 			herosprite.move(0.1, 0); 
-			herosprite.setTextureRect(IntRect(0, 0, 96, 96));    
+			herosprite.setTextureRect(IntRect(0, 0, 96, 96)); 
+			
 		} 
 
 		//координата Y на которой герой изображен идущим вверх равна 288   
 		if (Keyboard::isKeyPressed(Keyboard::Up)) 
 		{    
+			herosprite.setTexture(herotextureA);
 			herosprite.move(0, -0.1); 
 			herosprite.setTextureRect(IntRect(0, 0, 96, 96));    
+			
 		} 
 
 		//координата 0, это верхняя часть изображения с героем, от нее и отталкиваемся    
 		//ровными квадратиками по 96.   
 		if (Keyboard::isKeyPressed(Keyboard::Down)) 
-		{    herosprite.move(0, 0.1); 
-		herosprite.setTextureRect(IntRect(0, 0, 96, 96));    
+		{   
+			herosprite.setTexture(herotextureC);
+			herosprite.move(0, 0.1); 
+			herosprite.setTextureRect(IntRect(0, 0, 96, 96));    
+			
 		}   
 
 

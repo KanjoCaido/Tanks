@@ -13,6 +13,11 @@ int main()
 	herosprite.setTexture(herotexture);
 	herosprite.setPosition(64, 64);
 
+/*	sf::Texture kokotexture;
+	kokotexture.loadFromFile("Textures/koko.png");
+	sf::Sprite kokosprite;
+	kokosprite.setTexture(kokotexture); */
+
 	sf::Texture bgtexture;
 	bgtexture.loadFromFile("Textures/bg.png");
 	sf::Sprite bgsprite;
@@ -23,12 +28,12 @@ int main()
 	sf::Sprite wallsprite;
 	wallsprite.setTexture(walltexture);
 
-	sf::Image map_image;//объект изображения для карты
-	map_image.loadFromFile("Textures/bg.png");//загружаем файл для карты
-	sf::Texture map;//текстура карты
-	map.loadFromImage(map_image);//заряжаем текстуру картинкой
-	sf::Sprite s_map;//создаём спрайт для карты
-	s_map.setTexture(map);//заливаем текстуру спрайтом 
+	sf::Image map_image;
+	map_image.loadFromFile("Textures/bg.png");
+	sf::Texture map;
+	map.loadFromImage(map_image);
+	sf::Sprite s_map;
+	s_map.setTexture(map); 
 
 	while (window.isOpen())
 	{
@@ -44,12 +49,12 @@ int main()
 		for (int i = 0; i < HEIGHT_MAP; i++)
 			for (int j = 0; j < WIDTH_MAP; j++)
 			{
-				if (TileMap[i][j] == ' ') s_map.setTexture(bgtexture); //если
-				//встретили символ пробел, то рисуем 1-й квадратик
-				if ((TileMap[i][j] == '0')) s_map.setTexture(walltexture);//если
-				//встретили символ 0, то рисуем 3й квадратик
-				s_map.setPosition(j * 32, i * 32);//раскладываем квадратики в карту.
-				window.draw(s_map);//рисуем квадратики на экран
+				if (TileMap[i][j] == ' ') s_map.setTexture(bgtexture); 
+				if (TileMap[i][j] == '0') s_map.setTexture(walltexture);
+//				if (TileMap[i][j] == 'l') s_map.setTextureRect(sf::IntRect(0,0,16,32));
+//				if (TileMap[i][j] == 'p') s_map.setTextureRect(sf::IntRect(16,0,32,32));
+				s_map.setPosition(j * 32, i * 32);
+				window.draw(s_map);
 			}
 
 		window.draw(herosprite);

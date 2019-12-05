@@ -6,9 +6,10 @@ using namespace sf;
 int main()
 {
 	const int s_size = 64;
+	const int offset = 8;
 
 	bool shot = false;
-	int dir = 1, bdir = 1;
+	int dir = 0, bdir = 1, s_x, s_y;
 
 	VideoMode desktop = VideoMode::getDesktopMode();
 	RenderWindow window(VideoMode(s_size * WIDTH_MAP, s_size * HEIGHT_MAP, desktop.bitsPerPixel), "Tanks");
@@ -20,7 +21,7 @@ int main()
 	Sprite herosprite;
 	herosprite.setTexture(herotexture);
 	herosprite.setPosition(8 * s_size + 32, 6 * s_size + 32);
-	herosprite.setOrigin(32, 32);
+	herosprite.setOrigin(s_size/2, s_size/2);
 
 	Texture wall;
 	wall.loadFromFile("Textures/wall.png");
@@ -166,6 +167,36 @@ int main()
 					break;
 				}
 
+		if (herosprite.getPosition().x <= s_size / 2)
+			herosprite.setPosition(s_size / 2, herosprite.getPosition().y);
+
+		if (herosprite.getPosition().y <= s_size / 2)
+			herosprite.setPosition(herosprite.getPosition().x, s_size / 2); 
+
+		if (herosprite.getPosition().x >= s_size * WIDTH_MAP - s_size / 2)
+			herosprite.setPosition(s_size * WIDTH_MAP - s_size / 2, herosprite.getPosition().y);
+
+		if (herosprite.getPosition().y >= s_size * HEIGHT_MAP - s_size / 2)
+			herosprite.setPosition(herosprite.getPosition().x, s_size * HEIGHT_MAP - s_size / 2);
+
+		for (int i = (herosprite.getPosition().y - s_size / 2 + offset) / s_size; i < ((herosprite.getPosition().y - s_size / 2 - offset) + s_size) / s_size; i++)
+			for (int j = (herosprite.getPosition().x - s_size / 2 + offset) / s_size; j < ((herosprite.getPosition().x - s_size / 2 - offset) + s_size) / s_size; j++)
+			{ 
+				s_x = herosprite.getPosition().x;
+				s_y = herosprite.getPosition().y;
+				if (TileMap[i][j] == '0' || TileMap[i][j] == 'm' || TileMap[i][j] == 'd' || TileMap[i][j] == 'u')
+				{ 
+					if (dir == 2) 
+						herosprite.setPosition(s_x, i * s_size - s_size / 2 + offset);
+					if (dir == 1) 
+						herosprite.setPosition(s_x, i * s_size + 2 * s_size - s_size / 2 - offset);
+					if (dir == 4)
+						herosprite.setPosition(j * s_size - s_size / 2 + offset, s_y);
+					if (dir == 3)
+						herosprite.setPosition(j * s_size + 2 * s_size - s_size / 2 - offset, s_y);
+				} 
+			}
+		
 		if (shot)
 			window.draw(bulletsprite);
 

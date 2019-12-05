@@ -12,7 +12,7 @@ private:
 
 public:
 	bool present; // is it shot ?
-		float timeBeforeShot;
+	float timeBeforeShot;
 	sf::Sprite mSprite;
 
 	explicit Bullet(const float& x, const float& y);
@@ -65,6 +65,7 @@ void Bullet::move(const sf::Int64& time) {
 }
 
 
+
 int main()
 {
 	VideoMode desktop = sf::VideoMode::getDesktopMode();
@@ -79,8 +80,7 @@ int main()
 	herosprite.setPosition(250, 250);  
 	herosprite.setOrigin(32, 32);
 
-
-	
+		
 	while (window.isOpen())   
 	{
 		Event event; 

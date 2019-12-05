@@ -98,9 +98,9 @@ int main()
 				bulletsprite.setPosition(herosprite.getPosition().x - 32, herosprite.getPosition().y - 8);
 				break;
 			case 4:
-				bulletsprite.setPosition(herosprite.getPosition().x + 16, herosprite.getPosition().y - 8);
+				bulletsprite.setPosition(herosprite.getPosition().x + 16 , herosprite.getPosition().y - 8);
 				break;
-			}
+			   }
 			shot = true;
 		}
 

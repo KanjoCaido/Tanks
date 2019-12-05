@@ -7,6 +7,9 @@ int main()
 {
 	const int s_size = 64;
 
+	bool shot = false;
+	int dir = 1, bdir = 1;
+
 	VideoMode desktop = VideoMode::getDesktopMode();
 	RenderWindow window(VideoMode(s_size * WIDTH_MAP, s_size * HEIGHT_MAP, desktop.bitsPerPixel), "Tanks");
 	window.setFramerateLimit(60);
@@ -16,7 +19,7 @@ int main()
 
 	Sprite herosprite;
 	herosprite.setTexture(herotexture);
-	herosprite.setPosition(8 * s_size, 6 * s_size);
+	herosprite.setPosition(8 * s_size + 32, 6 * s_size + 32);
 	herosprite.setOrigin(32, 32);
 
 	Texture wall;
@@ -26,19 +29,17 @@ int main()
 	Texture bg;
 	bg.loadFromFile("Textures/bg.png");
 	Sprite s_bg;
+	s_bg.setTexture(bg);
 
 	Texture tower;
 	tower.loadFromFile("Textures/tower.png");
 	Sprite s_tower;
+	s_tower.setTexture(tower);
 
 	Texture bullettexture;
 	bullettexture.loadFromFile("Textures/bullet.png");
-
 	Sprite bulletsprite;
 	bulletsprite.setTexture(bullettexture);
-
-	bool shot = false;
-	int dir = 1, bdir = 1;
 
 	while (window.isOpen())
 	{
@@ -99,7 +100,6 @@ int main()
 			case 4:
 				bulletsprite.setPosition(herosprite.getPosition().x + 16, herosprite.getPosition().y - 8);
 				break;
-
 			}
 			shot = true;
 		}
@@ -128,15 +128,11 @@ int main()
 				switch (TileMap[i][j])
 				{
 				case ' ':
-					s_bg.setTexture(bg);
-					s_bg.setTextureRect(sf::IntRect(0, 0, s_size, s_size));
 					s_bg.setPosition(j * s_size, i * s_size);
 					window.draw(s_bg);
 					break;
 
 				case 'c':
-					s_tower.setTexture(tower);
-					s_tower.setTextureRect(sf::IntRect(0, 0, s_size, s_size));
 					s_tower.setPosition(j * s_size, i * s_size);
 					window.draw(s_tower);
 					break;

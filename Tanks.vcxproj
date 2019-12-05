@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="Tanks.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="map.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{F1170463-80F4-4C37-B4FC-B38A258827FB}</ProjectGuid>
@@ -162,15 +165,6 @@
       <AdditionalLibraryDirectories>C:\Users\Admin\Desktop\техн.прогр\tank\Tanks\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
-<<<<<<< HEAD
-  <ItemGroup>
-    <ClCompile Include="Tanks.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="map.h" />
-  </ItemGroup>
-=======
->>>>>>> feature-maintank
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

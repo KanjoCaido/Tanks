@@ -2,6 +2,30 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
+////////////////////////////КЛАСС ПУЛИ//////////////////////// 
+class Bullet {
+private:
+	float mX, mY, mDx, mDy;
+	int mDir;
+
+	sf::Texture mTexture;
+
+public:
+	bool present; // is it shot ?
+		float timeBeforeShot;
+	sf::Sprite mSprite;
+
+	explicit Bullet(const float& x, const float& y);
+
+	void shoot() { present = true; }
+	void move(const sf::Int64& time);
+	//void update(Map& map, const sf::Int64& time, float& x, const float& y, const int& dir);
+	//void map_interaction(Map& map);
+};
+
+
+
+
 int main()
 {
 	VideoMode desktop = sf::VideoMode::getDesktopMode();
@@ -16,6 +40,8 @@ int main()
 	herosprite.setPosition(250, 250);  
 	herosprite.setOrigin(32, 32);
 
+
+	
 	while (window.isOpen())   
 	{
 		Event event; 

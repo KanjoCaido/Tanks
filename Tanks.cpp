@@ -23,7 +23,46 @@ public:
 	//void map_interaction(Map& map);
 };
 
+Bullet::Bullet(const float& x, const float& y)
+	: present(false), mX(x), mY(y), mDir(0), mDx(0.f), mDy(0.f), timeBeforeShot(0.f) {
 
+	mTexture.loadFromFile("Textures/bullet.png");
+	mSprite.setTexture(mTexture);
+	mSprite.setTextureRect(sf::IntRect(0, 0, 9, 12));
+	mSprite.setPosition(x, y);
+}
+
+void Bullet::move(const sf::Int64& time) {
+	switch (mDir) {
+	case 0:
+		mDx = 0.3f;
+		mDy = 0;
+		mSprite.setRotation(90.f);
+		break;
+
+	case 1:
+		mDx = -0.3f;
+		mDy = 0;
+		mSprite.setRotation(-90.f);
+		break;
+
+	case 2:
+		mDx = 0;
+		mDy = 0.3f;
+		mSprite.setRotation(180.f);
+		break;
+
+	case 3:
+		mDx = 0;
+		mDy = -0.3f;
+		mSprite.setRotation(0.f);
+		break;
+	}
+
+	mX += mDx * time;
+	mY += mDy * time;
+	mSprite.setPosition(mX, mY);
+}
 
 
 int main()

@@ -109,7 +109,10 @@ int main()
 		}
 
 		window.clear();
-		window.draw(bulletsprite);
+
+		if (shot)
+			window.draw(bulletsprite);
+
 		window.draw(herosprite);
 		window.display();
 	}

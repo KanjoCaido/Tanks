@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <bullet.h>
 
 class map; //класс карты, подключаем для функции взаимодействия с картой
 

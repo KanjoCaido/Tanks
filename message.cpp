@@ -1,7 +1,8 @@
 #include <iostream>
 #include <message.h>
 
-message::message(const float x, const float y, const sf::String str): go_x(x), go_y(y) //определение конструктора, передаем с его помощью координаты сообщения и текстовую строку с сообщением
+message::message(const float x, const float y, const sf::String str): go_x(x), go_y(y) 
+//определение конструктора, передаем с его помощью координаты сообщения и текстовую строку с сообщением
 {
 	go_Font.loadFromFile("Font/prstart.ttf"); //загружаем шрифт из папки Font, файла prstart.ttf
 	go_Str.setFont(go_Font); //устанавиваем шрифт текста
